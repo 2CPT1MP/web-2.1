@@ -10,6 +10,7 @@ class Request {
     public function __construct(){
         $this->method = $_SERVER["REQUEST_METHOD"];
         $this->setUrl($_SERVER["REQUEST_URI"]);
+        $this->body = $_POST;
     }
 
     public function getMethod() {
@@ -30,7 +31,11 @@ class Request {
         return $this->params;
     }
 
-    public function getRoute() {
+    public function getPath() {
         return $this->path;
+    }
+
+    public function getBody() {
+        return $this->body;
     }
 }
