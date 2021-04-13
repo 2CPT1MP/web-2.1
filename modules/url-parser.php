@@ -1,11 +1,14 @@
 <?php
 
+if (!function_exists('parseRoute')):
 function parseRoute($routeUriStr) {
     $splitPath = explode('/', $routeUriStr);
     array_shift($splitPath);
     return $splitPath;
 }
+endif;
 
+if (!function_exists('parseQueryParams')):
 function parseQueryParams($queryParamsStr): array {
     $parsedListOfParams = [];
     $listOfParams = explode('&', $queryParamsStr);
@@ -17,7 +20,9 @@ function parseQueryParams($queryParamsStr): array {
     }
     return $parsedListOfParams;
 }
+endif;
 
+if (!function_exists('parseRequestUrl')):
 function parseRequestUrl($requestUrl): array {
     $paramPos = strpos($requestUrl, '?');
 
@@ -32,3 +37,4 @@ function parseRequestUrl($requestUrl): array {
 
     return [$route, $params];
 }
+endif;

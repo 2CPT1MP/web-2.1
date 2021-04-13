@@ -1,23 +1,23 @@
-<form action="/data/student/st1" method="get">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name">
-    <input type="number" name="age" id="age">
-    <input type="submit" value="submit">
-</form>
-<form action="/data" method="post">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name">
-    <input type="submit" value="submit">
-</form>
-
-
 <?php
+
 require('../modules/request.php');
+require('../routes/index.php');
+require('../routes/person.php');require('../routes/vehicle.php');
+require('../controllers/index.controller.php');
 
 $request = new Request();
-echo json_encode($request->getMethod());
-echo json_encode($request->getPath());
-echo json_encode($request->getParams());
-echo json_encode($request->getBody());
+$rootRouter = new RootRouter();
+
+
+$rootRouter->addRouter("/person", new PersonRouter());
+$rootRouter->addRouter("/vehicle", new VehicleRouter());
+$rootRouter->addController('/', new IndexController());
+$res = $rootRouter->processRequest($request);
+echo $res;
+
+echo "method: " .json_encode($request->getMethod()) ."<br>";
+echo "path: ". json_encode($request->getPath()) ."<br>";
+echo "params: ".json_encode($request->getParams()) ."<br>";
+echo "body: ".json_encode($request->getBody()) ."<br>";
 
 

@@ -1,7 +1,9 @@
 <?php
+if (!class_exists('Request')):
+
 require('url-parser.php');
 
-class Request {
+class Request{
     private $method;
     private $path;
     private $params;
@@ -13,29 +15,30 @@ class Request {
         $this->body = $_POST;
     }
 
-    public function getMethod() {
+    public function getMethod(){
         return $this->method;
     }
 
-    public function setMethod($method) {
+    public function setMethod($method){
         $this->method = $method;
     }
 
-    public function setUrl($url) {
+    public function setUrl($url){
         $result = parseRequestUrl($url);
         $this->path = $result[0];
         $this->params = $result[1];
     }
 
-    public function getParams() {
+    public function getParams(){
         return $this->params;
     }
 
-    public function getPath() {
+    public function getPath(){
         return $this->path;
     }
 
-    public function getBody() {
+    public function getBody(){
         return $this->body;
     }
 }
+endif;
