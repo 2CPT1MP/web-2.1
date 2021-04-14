@@ -1,26 +1,17 @@
-<?php
-if (!class_exists('Request')):
-
+<?php if (!class_exists('Request')):
 require('url-parser.php');
 
-class Request{
-    private $method;
-    private $path;
-    private $params;
-    private $body;
+class Request {
+    private $method, $path, $params, $body;
 
-    public function __construct(){
+    public function __construct() {
         $this->method = $_SERVER["REQUEST_METHOD"];
         $this->setUrl($_SERVER["REQUEST_URI"]);
         $this->body = $_POST;
     }
 
-    public function getMethod(){
+    public function getMethod() {
         return $this->method;
-    }
-
-    public function setMethod($method){
-        $this->method = $method;
     }
 
     public function shift() {
@@ -29,8 +20,8 @@ class Request{
             $this->path[] = "";
     }
 
-    public function setUrl($url){
-        $result = parseRequestUrl($url);
+    public function setUrl($url) {
+        $result = UrlParser::parseRequestUrl($url);
         $this->path = $result[0];
         $this->params = $result[1];
     }
@@ -43,8 +34,9 @@ class Request{
         return $this->path;
     }
 
-    public function getBody(){
+    public function getBody(): array {
         return $this->body;
     }
 }
+
 endif;

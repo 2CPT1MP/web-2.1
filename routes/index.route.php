@@ -1,36 +1,35 @@
-<?php
-if (!class_exists('RootRouter')):
+<?php if (!class_exists('RootRouter')):
 
 class RootRouter {
-    protected $routers = [];
-    protected $controllers = [];
+    protected array $routers = [];
+    protected array $controllers = [];
 
     public function addRouter($baseUrl, $router) {
-        $parsedBaseUrl = parseRoute($baseUrl)[0];
+        $parsedBaseUrl = UrlParser::parseRoute($baseUrl)[0];
         $this->routers[$parsedBaseUrl] = $router;
     }
 
     public function addController($postfixUrl, $controller) {
-        $parsedPostfixUrl = parseRoute($postfixUrl)[0];
+        $parsedPostfixUrl = UrlParser::parseRoute($postfixUrl)[0];
         $this->controllers[$parsedPostfixUrl] = $controller;
     }
 
-    public function processRequest($request) {
+    public function processRequest($request): string {
         $basePath = $request->getPath()[0];
 
         if (count($request->getPath()) === 1)
             foreach ($this->controllers as $key => $value)
-                if ($key === $basePath) {
+                if ($key === $basePath)
                     return $value->processRequest($request);
-                }
 
         foreach ($this->routers as $key => $value) {
             if ($key === $basePath) {
                 $request->shift();
-                $res = $value->processRequest($request);
-                return $res;
+                return $value->processRequest($request);
             }
         }
+        return "<p>Router/Controller was not found</p>";
     }
 }
+
 endif;

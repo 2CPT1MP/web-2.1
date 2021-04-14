@@ -1,6 +1,4 @@
-<?php
-if (!class_exists('VehicleRouter')):
-
+<?php if (!class_exists('VehicleRouter')):
 require('../controllers/vehicle.controller.php');
 
 class VehicleRouter extends RootRouter {
@@ -8,4 +6,5 @@ class VehicleRouter extends RootRouter {
         $this->addController('/', new VehicleController());
     }
 }
+
 endif;

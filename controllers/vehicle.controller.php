@@ -1,19 +1,18 @@
-<?php
-if (!class_exists('VehicleController')):
+<?php if (!class_exists('VehicleController')):
+require('../views/vehicle.view.php');
 
-    require('../views/vehicle.php');
-
-    class VehicleController {
-
-        public function showVehicle($model) {
-            return VehicleView::render($model);
-        }
-
-        public function processRequest($request) {
-            if ($request->getMethod() === 'POST') {
-                $reqBody = $request->getBody();
-                return $this->showVehicle($reqBody["model"]);
-            }
-        }
+class VehicleController {
+    public function showVehicle($model): string {
+        return VehicleView::render($model);
     }
+
+    public function processRequest($request): string {
+        if ($request->getMethod() === 'POST') {
+            $reqBody = $request->getBody();
+            return $this->showVehicle($reqBody["model"]);
+        }
+        return "<p>Handler was not found</p>";
+    }
+}
+
 endif;

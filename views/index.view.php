@@ -1,8 +1,7 @@
-<?php
-if (!class_exists('IndexView')):
+<?php if (!class_exists('IndexView')):
 
 class IndexView {
-    public static function render() {
+    public static function render(): string {
         return <<<INDEX
             <form action="/person" method="post">
                 <label for="name">Name:</label><br>
@@ -16,7 +15,8 @@ class IndexView {
                 <input type="text" name="model" id="model"><br>
                 <input type="submit" value="submit">
             </form>
-    INDEX;
+        INDEX;
     }
 }
+
 endif;

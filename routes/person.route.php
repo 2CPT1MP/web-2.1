@@ -1,6 +1,4 @@
-<?php
-if (!class_exists('PersonRouter')):
-
+<?php if (!class_exists('PersonRouter')):
 require('../controllers/person.controller.php');
 
 class PersonRouter extends RootRouter {
