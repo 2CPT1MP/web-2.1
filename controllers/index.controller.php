@@ -1,11 +1,17 @@
 <?php
 if (!class_exists('IndexController')):
 
+require('../views/index.php');
 
 class IndexController {
 
+    public function getIndex() {
+        return IndexView::render();
+    }
+
     public function processRequest($request) {
-        echo "<h1>Hello, World!</h1>";
+        if ($request->getMethod() === 'GET')
+            return $this->getIndex();
     }
 }
 endif;

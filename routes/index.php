@@ -18,22 +18,17 @@ class RootRouter {
     public function processRequest($request) {
         $basePath = $request->getPath()[0];
 
-        if (count($request->getPath()) === 1) {
+        if (count($request->getPath()) === 1)
             foreach ($this->controllers as $key => $value)
                 if ($key === $basePath) {
-                    $value->processRequest($request);
-                    return "CONTROLLER FOUND";
+                    return $value->processRequest($request);
                 }
-            var_dump($this->controllers);
-            return "CONTROLLER NOT FOUND";
-        }
 
         foreach ($this->routers as $key => $value) {
             if ($key === $basePath) {
-                $shiftedPath = $request->getPath();
-                array_shift($shiftedPath);
-                $value->processRequest($request);
-                return "ROUTER";
+                $request->shift();
+                $res = $value->processRequest($request);
+                return $res;
             }
         }
     }

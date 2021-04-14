@@ -23,6 +23,12 @@ class Request{
         $this->method = $method;
     }
 
+    public function shift() {
+        array_shift($this->path);
+        if (!$this->path)
+            $this->path[] = "";
+    }
+
     public function setUrl($url){
         $result = parseRequestUrl($url);
         $this->path = $result[0];

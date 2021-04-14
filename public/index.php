@@ -2,16 +2,17 @@
 
 require('../modules/request.php');
 require('../routes/index.php');
-require('../routes/person.php');require('../routes/vehicle.php');
+require('../routes/person.php');
+require('../routes/vehicle.php');
 require('../controllers/index.controller.php');
 
 $request = new Request();
 $rootRouter = new RootRouter();
 
-
 $rootRouter->addRouter("/person", new PersonRouter());
 $rootRouter->addRouter("/vehicle", new VehicleRouter());
 $rootRouter->addController('/', new IndexController());
+
 $res = $rootRouter->processRequest($request);
 echo $res;
 
