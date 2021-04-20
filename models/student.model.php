@@ -1,4 +1,5 @@
 <?php if(!class_exists('Student')):
+require('bio.model.php');
 
 class Student {
     private string $name, $group, $labTitle;
@@ -32,6 +33,10 @@ class Student {
 
     public function getName(): string {
         return $this->name;
+    }
+
+    public function getBio(): Bio {
+        return $this->bio;
     }
 
     public function getGroup(): string {

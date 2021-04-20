@@ -1,15 +1,13 @@
 <?php
 require('../modules/request.php');
 require('../routes/index.route.php');
-require('../routes/person.route.php');
-require('../routes/vehicle.route.php');
+require('../routes/bio.route.php');
 require('../controllers/index.controller.php');
 
 $request = new Request();
 $rootRouter = new RootRouter();
 
-$rootRouter->addRouter("/person", new PersonRouter());
-$rootRouter->addRouter("/vehicle", new VehicleRouter());
+$rootRouter->addRouter("/bio", new BioRouter());
 $rootRouter->addController('/', new IndexController());
 
 $res = $rootRouter->processRequest($request);

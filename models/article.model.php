@@ -7,6 +7,22 @@ class Article {
         $this->heading = $heading;
         $this->text = $text;
     }
+
+    /**
+     * @return string
+     */
+    public function getHeading(): string
+    {
+        return $this->heading;
+    }
+
+    /**
+     * @return string
+     */
+    public function getText(): string
+    {
+        return $this->text;
+    }
 }
 
 endif;
