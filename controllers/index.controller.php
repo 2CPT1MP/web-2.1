@@ -1,9 +1,12 @@
-<?php if (!class_exists('IndexController')):
+<?php
+if (!class_exists('IndexController')):
 require('../views/index.view.php');
+require('../models/student.model.php');
 
 class IndexController {
     public function getIndex(): string {
-        return IndexView::render();
+        $student = new Student();
+        return IndexView::render($student);
     }
 
     public function processRequest($request): string {
