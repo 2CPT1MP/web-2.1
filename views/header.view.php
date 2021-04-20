@@ -43,72 +43,58 @@ class HeaderView {
                       </div>';
 
         if ($title === 'Интересы')
-            $html .= '<div class="subNav">
-                      <img id="interests" src="icons/interests-checked.png" alt="">
-                      <div class="links">
-                        <a href="pages/interests.html" class="active">Интересы</a>
-                        <div id="sublist">
-                            <a href="pages/interests.html#hobbies">Занятия</a>
-                            <a href="pages/interests.html#music">Книги</a>
-                            <a href="pages/interests.html#books">Музыка</a>
-                        </div>
-                      </div>
+            $html .= '<div>
+                          <img id="interests" src="icons/interests-checked.png" alt="">
+                          <a href="/interests" class="active">Интересы</a>
                       </div>';
         else
-            $html .= '<div class="subNav">
-                      <img id="interests" src="icons/interests.png" alt="">
-                      <div class="links">
-                        <a href="pages/interests.html">Интересы</a>
-                        <div id="sublist">
-                            <a href="pages/interests.html#hobbies">Занятия</a>
-                            <a href="pages/interests.html#music">Книги</a>
-                            <a href="pages/interests.html#books">Музыка</a>
-                        </div>
-                      </div>
+            $html .= '<div>
+                          <img id="interests" src="icons/interests.png" alt="">
+                          <a href="/interests">Интересы</a>
                       </div>';
 
         if ($title === 'Учеба')
             $html .= '<div>
                         <img id="studies" src="icons/studies-checked.png" alt="">
-                        <a href="pages/studies.html" class="active">Учёба</a>
+                        <a href="/studies" class="active">Учёба</a>
                       </div>';
         else
             $html .= '<div>
                         <img id="studies" src="icons/studies.png" alt="">
-                        <a href="pages/studies.html">Учёба</a>
+                        <a href="/studies">Учёба</a>
                       </div>';
 
         if ($title === 'Альбом')
             $html .= '<div>
                         <img id="photos" src="icons/photos-checked.png" alt="">
-                        <a href="pages/photos.html" class="active">Альбом</a>
+                        <a href="/photos" class="active">Альбом</a>
                       </div>';
         else
             $html .= '<div>
                         <img id="photos" src="icons/photos.png" alt="">
-                        <a href="pages/photos.html">Альбом</a>
+                        <a href="/photos">Альбом</a>
                       </div>';
 
         if ($title === 'Контакт')
             $html .=  '<div>
                          <img id="contact" src="icons/contact-checked.png" alt="">
-                         <a href="pages/contact.html" class="active">Контакт</a>
+                         <a href="/contact" class="active">Контакт</a>
                        </div>';
         else
             $html .=  '<div>
                          <img id="contact" src="icons/contact.png" alt="">
-                         <a href="pages/contact.html">Контакт</a>
+                         <a href="/contact">Контакт</a>
                        </div>';
 
         if ($title === 'Тест')
             $html .=  '<div>
                           <img id="test" src="icons/test-checked.png" alt="">
-                          <a href="pages/test.html" class="active">Тест</a>
+                          <a href="/test" class="active">Тест</a>
                        </div>';
         else
             $html .=  '<div>
                          <img id="test" src="icons/test.png" alt="">
-                         <a href="pages/test.html">Тест</a>
+                         <a href="/test">Тест</a>
                        </div>';
 
         return $html .= '</nav>';

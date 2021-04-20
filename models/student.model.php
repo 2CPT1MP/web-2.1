@@ -1,10 +1,12 @@
 <?php if(!class_exists('Student')):
 require('bio.model.php');
+require('interests.model.php');
 
 class Student {
     private string $name, $group, $labTitle;
     private int $labNum;
     private Bio $bio;
+    private Interests $interests;
 
     public function __construct() {
         $this->name = "Виниченко А.А.";
@@ -29,6 +31,27 @@ class Student {
                                     на территории п. Школьное, благоприятного для жителей населенного пункта.
 							        Неженат, детей нет. Беспартийный; судимости не имеется. Проживаю по адресу: г. Севастополь, Нахимовский район, 
 							        ул. Одинцова, д. 5, кв. 12.');
+
+        $this->interests = new Interests();
+        $this->interests->createCategory('Любимые занятия');
+        $this->interests->addItemToCategory('Любимые занятия', 'интерес к компьютерным, программным и техническим новшествам');
+        $this->interests->addItemToCategory('Любимые занятия', 'изучение профессиональной литературы');
+        $this->interests->addItemToCategory('Любимые занятия', 'чтение исторических романов, философских книг, классической литературы, в том числе и современной');
+        $this->interests->addItemToCategory('Любимые занятия', 'игра на музыкальных инструментах, увлечение классической музыкой');
+        $this->interests->addItemToCategory('Любимые занятия', 'моделирование одежды, создание дизайнерских кукол;');
+
+        $this->interests->createCategory("Любимые книги");
+        $this->interests->addItemToCategory('Любимые книги', '"Анна Каренина" - Лев Толстой');
+        $this->interests->addItemToCategory('Любимые книги', '«Автостопом по галактике» — Дуглас Адамс');
+        $this->interests->addItemToCategory('Любимые книги', '«Алиса в Стране чудес» — Льюис Кэрролл');
+        $this->interests->addItemToCategory('Любимые книги', '«Алхимик» — Пауло Коэльо');
+        $this->interests->addItemToCategory('Любимые книги', '«Американский психопат» — Брет Истон Эллис');
+
+        $this->interests->createCategory("Любимая музыка");
+        $this->interests->addItemToCategory('Любимая музыка', 'Imagine Dragon - Natural');
+        $this->interests->addItemToCategory('Любимая музыка', 'Imagine Dragons - Dream');
+        $this->interests->addItemToCategory('Любимая музыка', 'Imagine Dragons - Whatever it takes');
+        $this->interests->addItemToCategory('Любимая музыка', 'Malfa - So Long');
     }
 
     public function getName(): string {
@@ -37,6 +60,10 @@ class Student {
 
     public function getBio(): Bio {
         return $this->bio;
+    }
+
+    public function getInterests(): Interests {
+        return $this->interests;
     }
 
     public function getGroup(): string {
