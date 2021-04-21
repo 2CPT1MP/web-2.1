@@ -1,12 +1,15 @@
 <?php if(!class_exists('Student')):
 require('bio.model.php');
 require('interests.model.php');
+require('studies.model.php');
+require('schedule-record.model.php');
 
 class Student {
     private string $name, $group, $labTitle;
     private int $labNum;
     private Bio $bio;
     private Interests $interests;
+    private Studies $studies;
 
     public function __construct() {
         $this->name = "Виниченко А.А.";
@@ -52,6 +55,50 @@ class Student {
         $this->interests->addItemToCategory('Любимая музыка', 'Imagine Dragons - Dream');
         $this->interests->addItemToCategory('Любимая музыка', 'Imagine Dragons - Whatever it takes');
         $this->interests->addItemToCategory('Любимая музыка', 'Malfa - So Long');
+
+        ScheduleRecord::setSemestersCount(4);
+        ScheduleRecord::setFieldCount(3);
+        $this->studies = new Studies();
+        $this->studies->setUniversity("Севастопольский государственнный университет");
+        $this->studies->setDepartment("Информационные системы");
+        $this->studies->setStudyProgram("09.03.02 Информационные системы и технологии");
+
+        $ecology = new ScheduleRecord("Экология");
+        $ecology->addFieldToSemester(3, 1, 1);
+        $ecology->addFieldToSemester(3, 2, 0);
+        $ecology->addFieldToSemester(3, 3, 1);
+
+        $math = new ScheduleRecord("Высшая математика");
+        $math->addFieldToSemester(1, 1, 3);
+        $math->addFieldToSemester(1, 2, 0);
+        $math->addFieldToSemester(1, 3, 3);
+
+        $math->addFieldToSemester(2, 1, 3);
+        $math->addFieldToSemester(2, 2, 0);
+        $math->addFieldToSemester(2, 3, 3);
+
+        $math->addFieldToSemester(3, 1, 2);
+        $math->addFieldToSemester(3, 2, 0);
+        $math->addFieldToSemester(3, 3, 2);
+
+        $russian = new ScheduleRecord("Русский язык");
+        $russian->addFieldToSemester(1, 1, 1);
+        $russian->addFieldToSemester(1, 2, 0);
+        $russian->addFieldToSemester(1, 3, 2);
+
+        $discreteMath = new ScheduleRecord("Дискретная математика");
+        $discreteMath->addFieldToSemester(1, 1, 2);
+        $discreteMath->addFieldToSemester(1, 2, 0);
+        $discreteMath->addFieldToSemester(1, 3, 1);
+
+        $discreteMath->addFieldToSemester(2, 1, 3);
+        $discreteMath->addFieldToSemester(2, 2, 0);
+        $discreteMath->addFieldToSemester(2, 3, 2);
+
+        $this->studies->addScheduleRecord($ecology);
+        $this->studies->addScheduleRecord($math);
+        $this->studies->addScheduleRecord($russian);
+        $this->studies->addScheduleRecord($discreteMath);
     }
 
     public function getName(): string {
@@ -64,6 +111,10 @@ class Student {
 
     public function getInterests(): Interests {
         return $this->interests;
+    }
+
+    public function getStudies(): Studies {
+        return $this->studies;
     }
 
     public function getGroup(): string {
