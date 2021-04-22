@@ -11,6 +11,7 @@ require('../controllers/bio.controller.php');
 require('../controllers/interests.controller.php');
 require('../controllers/studies.controller.php');
 require('../controllers/photos.controller.php');
+require('../controllers/test-verifier.controller.php');
 
 $request = new Request();
 $rootRouter = new RootRouter();

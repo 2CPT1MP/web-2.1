@@ -6,7 +6,7 @@ class TestView {
     public static function render(Test $test): string {
         $html = HeaderView::render('Тест');
         $html .= '<article class="flex-container card">
-				  <form action="/verify" method=POST autocomplete="off">
+				  <form action="/test/verify" method=POST autocomplete="off">
 						<label>Наименование дисциплины:
                             <input name="disc-name" type="text" value="Информатика" readonly>
 						</label>
@@ -17,8 +17,8 @@ class TestView {
 						    <input name="sender-group" type="text" required>
 						</label>
 						<label>Пол<br>
-							<label>Мужской<input type="radio" name="sender-gender" value="male" required></label>
-							<label>Женский<input type="radio" name="sender-gender" value="female" required></label>
+							<label>Мужской<input type="radio" name="sender-gender" value="Мужской" required></label>
+							<label>Женский<input type="radio" name="sender-gender" value="Женский" required></label>
 						</label><br>
 						<label>Возраст
 						    <input name="sender-age" type=number min=17 max=80 value="18" required>
@@ -31,7 +31,7 @@ class TestView {
             $answers = array_merge($testQuestion->getRightAnswers(), $testQuestion->getWrongAnswers());
 
             $html .= "<label>{$testQuestion->getQuestion()}
-                      <select required name=\"{$testQuestion->getQuestion()}\">
+                      <select required name=\"{$testQuestion->getQuestion()}[]\">
                       <option value='none'>-</option>
             ";
 

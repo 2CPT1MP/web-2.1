@@ -1,14 +1,9 @@
 <?php if (!class_exists('ContactValidator')):
+require('person.validator.php');
 
-class ContactValidator {
-    private array $validators = [], $errors = [];
-
+class ContactValidator extends PersonValidator {
     public function __construct($formData) {
-        $this->validators["sender-name"] = isset($formData["sender-name"]) && $this->isValidName($formData["sender-name"]);
-        $this->errors["sender-name"] = "Неверное имя";
-
-        $this->validators["sender-gender"] = isset($formData["sender-gender"]) && $this->isValidGender($formData["sender-gender"]);
-        $this->errors["sender-gender"] = "Неверный пол";
+        parent::__construct($formData);
 
         $this->validators["sender-date"] = isset($formData["sender-day"]) && isset($formData["sender-month"]) && isset($formData["sender-year"]) &&
                                            $this->isValidDate($formData["sender-day"], $formData["sender-month"] + 1, $formData["sender-year"]);
@@ -34,12 +29,6 @@ class ContactValidator {
         return [$valid, $msg];
     }
 
-
-    public function isValidName(string $name): bool {
-        $validNamePattern = '/^[А-ЯA-Z]([а-яa-z])+\s[А-ЯA-Z]([а-яa-z])+\s[А-ЯA-Z]([а-яa-z])+$/u';
-        return preg_match($validNamePattern, $name);
-    }
-
     public function isValidEmail(string $email): bool {
         $validEmailPattern = '/^[A-Za-z0-9_]+[@][A-Za-z0-9_]+[.][A-Za-z0-9_]+$/';
         return preg_match($validEmailPattern, $email);
@@ -54,10 +43,6 @@ class ContactValidator {
         if (!is_numeric($day) || !is_numeric($month) || !is_numeric($year))
             return false;
         return checkdate($month, $day, $year);
-    }
-
-    public function isValidGender(string $gender): bool {
-        return $gender === 'Мужской' || $gender === 'Женский';
     }
 }
 

@@ -126,20 +126,15 @@ class Student {
         $question1->addWrongAnswer("Windows");
         $question1->addWrongAnswer("Ubuntu");
 
-        $question1 = new TestQuestion("Операционной системой не является");
-        $question1->addRightAnswer("Word");
-        $question1->addWrongAnswer("Windows");
-        $question1->addWrongAnswer("Ubuntu");
-
         $question2 = new TestQuestion("Браузером  не является");
-        $question2->addRightAnswer("Internet Explorer");
-        $question2->addWrongAnswer("VLC");
+        $question2->addWrongAnswer("Internet Explorer");
+        $question2->addRightAnswer("VLC");
         $question2->addWrongAnswer("Microsoft Edge");
 
         $question3 = new TestQuestion("Неправильным именем переменной является");
-        $question3->addRightAnswer("_var");
-        $question3->addWrongAnswer("2var");
-        $question3->addWrongAnswer("var");
+        $question3->addWrongAnswer("_var");
+        $question3->addRightAnswer("2var");
+        $question3->addRightAnswer("var");
 
 
         $this->test->addTestQuestion($question1);
