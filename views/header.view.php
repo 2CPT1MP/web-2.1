@@ -9,6 +9,7 @@ class HeaderView {
                 <link rel="stylesheet" href="styles/style.css" type="text/css">
                 <script src="scripts/jquery.js"></script>
                 <script src="scripts/navigation.js"></script>
+                <script src="scripts/photos.js"></script>
                 <script src="scripts/current_time.js"></script>
                 <script src="scripts/history_tracking.js"></script>
             </head>

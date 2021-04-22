@@ -10,6 +10,11 @@ class Student {
     private Bio $bio;
     private Interests $interests;
     private Studies $studies;
+    private array $photos  = [];
+
+    public function getPhotos(): array {
+        return $this->photos;
+    }
 
     public function __construct() {
         $this->name = "Виниченко А.А.";
@@ -99,6 +104,9 @@ class Student {
         $this->studies->addScheduleRecord($math);
         $this->studies->addScheduleRecord($russian);
         $this->studies->addScheduleRecord($discreteMath);
+
+        for ($index = 1; $index <= 15; $index++)
+            $this->addPhoto("Изображение $index", "/photos?id=$index");
     }
 
     public function getName(): string {
@@ -127,6 +135,10 @@ class Student {
 
     public function getLabNum(): int {
         return $this->labNum;
+    }
+
+    public function addPhoto(string $title, string $path): void {
+        $this->photos[] = new Photo($title, $path);
     }
 }
 

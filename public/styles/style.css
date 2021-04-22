@@ -261,17 +261,23 @@ div.links {
 	padding: 0;
 }
 
-img.enlarged {
-	width: 90vw;
-}
 
 img {
 	max-width: 50em;
+	width: 200px;
+}
+
+img.enlarged {
+	width: 90vw;
 }
 
 #gallery-div img{
 	width: auto;
 	height: 50vh;
+}
+
+.img-container div img {
+	width: 200px;
 }
 
 .calendar-cell {

@@ -4,6 +4,7 @@ require('../routes/index.route.php');
 require('../routes/bio.route.php');
 require('../routes/interests.route.php');
 require('../routes/studies.route.php');
+require('../routes/photos.route.php');
 require('../controllers/index.controller.php');
 
 $request = new Request();
@@ -12,6 +13,7 @@ $rootRouter = new RootRouter();
 $rootRouter->addRouter("/bio", new BioRouter());
 $rootRouter->addRouter("/interests", new InterestsRouter());
 $rootRouter->addRouter("/studies", new StudiesRouter());
+$rootRouter->addRouter("/photos", new PhotosRouter());
 $rootRouter->addController('/', new IndexController());
 
 $res = $rootRouter->processRequest($request);

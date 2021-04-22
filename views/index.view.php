@@ -27,9 +27,6 @@ class IndexView {
                     <a href="pages/history.html">Просмотр истории посещений</a>
                 </article>
             </main>
-            <footer class="main-footer dark-background">
-                <p> Copyright &copy;2020 </p>
-            </footer>
         INDEX;
     }
 }
