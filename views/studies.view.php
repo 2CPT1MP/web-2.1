@@ -1,6 +1,6 @@
 <?php if (!class_exists('StudiesView')):
 require('header.view.php');
-require('../models/studies.model.php');
+require('../models/studies.model/studies.model.php');
 
 class StudiesView {
     public static function render(Studies $studies): string {

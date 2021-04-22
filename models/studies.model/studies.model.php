@@ -1,5 +1,4 @@
 <?php if (!class_exists('Studies')):
-require('interests-category.model.php');
 
 class Studies {
     private string $university, $department, $studyProgram;

@@ -1,0 +1,33 @@
+<?php if (!class_exists('TestQuestion')):
+
+class TestQuestion {
+    private string $question;
+    private array $rightAnswers = [];
+    private array $wrongAnswers = [];
+
+    public function getRightAnswers(): array {
+        return $this->rightAnswers;
+    }
+
+    public function getWrongAnswers(): array {
+        return $this->wrongAnswers;
+    }
+
+    public function __construct(string $question) {
+        $this->question = $question;
+    }
+
+    public function addRightAnswer(string $answer) {
+        $this->rightAnswers[] = $answer;
+    }
+
+    public function addWrongAnswer(string $answer) {
+        $this->wrongAnswers[] = $answer;
+    }
+
+    public function getQuestion(): string {
+        return $this->question;
+    }
+}
+
+endif;

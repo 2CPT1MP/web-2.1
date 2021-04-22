@@ -1,19 +1,31 @@
 <?php if(!class_exists('Student')):
-require('bio.model.php');
-require('interests.model.php');
-require('studies.model.php');
-require('schedule-record.model.php');
+require('bio.model/bio.model.php');
+require('interests.model/interests.model.php');
+
+require('studies.model/studies.model.php');
+require('studies.model/schedule-record.model.php');
+
+require('test.model/test.model.php');
+require('test.model/test-question.model.php');
 
 class Student {
     private string $name, $group, $labTitle;
     private int $labNum;
+
     private Bio $bio;
     private Interests $interests;
     private Studies $studies;
+    private Test $test;
+
     private array $photos  = [];
+
 
     public function getPhotos(): array {
         return $this->photos;
+    }
+
+    public function getTest(): Test {
+        return $this->test;
     }
 
     public function __construct() {
@@ -107,6 +119,32 @@ class Student {
 
         for ($index = 1; $index <= 15; $index++)
             $this->addPhoto("Изображение $index", "/photos?id=$index");
+        $this->test = new Test();
+
+        $question1 = new TestQuestion("Операционной системой не является");
+        $question1->addRightAnswer("Word");
+        $question1->addWrongAnswer("Windows");
+        $question1->addWrongAnswer("Ubuntu");
+
+        $question1 = new TestQuestion("Операционной системой не является");
+        $question1->addRightAnswer("Word");
+        $question1->addWrongAnswer("Windows");
+        $question1->addWrongAnswer("Ubuntu");
+
+        $question2 = new TestQuestion("Браузером  не является");
+        $question2->addRightAnswer("Internet Explorer");
+        $question2->addWrongAnswer("VLC");
+        $question2->addWrongAnswer("Microsoft Edge");
+
+        $question3 = new TestQuestion("Неправильным именем переменной является");
+        $question3->addRightAnswer("_var");
+        $question3->addWrongAnswer("2var");
+        $question3->addWrongAnswer("var");
+
+
+        $this->test->addTestQuestion($question1);
+        $this->test->addTestQuestion($question2);
+        $this->test->addTestQuestion($question3);
     }
 
     public function getName(): string {

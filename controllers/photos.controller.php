@@ -8,10 +8,10 @@ class PhotosController {
 
     public function processRequest($request): string {
         if ($request->getMethod() === 'GET') {
-
             if (isset($request->getParams()["id"])) {
                 header('Content-Type: image/png');
                 readfile("../images/backgrounds/{$request->getParams()["id"]}.png");
+                return "";
             }
 
             $student = new Student();

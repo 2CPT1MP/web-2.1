@@ -1,28 +1,29 @@
 <?php
 require('../modules/request.php');
+
 require('../routes/index.route.php');
-require('../routes/bio.route.php');
-require('../routes/interests.route.php');
-require('../routes/studies.route.php');
-require('../routes/photos.route.php');
+require('../routes/contact.route.php');
+require('../routes/test.route.php');
+
 require('../controllers/index.controller.php');
+require('../controllers/history.controller.php');
+require('../controllers/bio.controller.php');
+require('../controllers/interests.controller.php');
+require('../controllers/studies.controller.php');
+require('../controllers/photos.controller.php');
 
 $request = new Request();
 $rootRouter = new RootRouter();
 
-$rootRouter->addRouter("/bio", new BioRouter());
-$rootRouter->addRouter("/interests", new InterestsRouter());
-$rootRouter->addRouter("/studies", new StudiesRouter());
-$rootRouter->addRouter("/photos", new PhotosRouter());
+$rootRouter->addRouter("/contact", new ContactRouter());
+$rootRouter->addRouter("/test", new TestRouter());
+
 $rootRouter->addController('/', new IndexController());
+$rootRouter->addController("/bio", new BioController());
+$rootRouter->addController("/interests", new InterestsController());
+$rootRouter->addController("/studies", new StudiesController());
+$rootRouter->addController("/photos", new PhotosController());
+$rootRouter->addController('/history', new HistoryController());
 
 $res = $rootRouter->processRequest($request);
 echo $res;
-
-/*
-echo "method: " .json_encode($request->getMethod()) ."<br>";
-echo "path: ". json_encode($request->getPath()) ."<br>";
-echo "params: ".json_encode($request->getParams()) ."<br>";
-echo "body: ".json_encode($request->getBody()) ."<br>";
-
-*/

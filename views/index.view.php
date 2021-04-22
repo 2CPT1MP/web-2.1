@@ -24,7 +24,7 @@ class IndexView {
                             <td>{$student->getLabTitle()}</td>
                         </tr>
                     </table>
-                    <a href="pages/history.html">Просмотр истории посещений</a>
+                    <a href="/history">Просмотр истории посещений</a>
                 </article>
             </main>
         INDEX;

@@ -1,6 +1,6 @@
 <?php if (!class_exists('InterestsView')):
 require('header.view.php');
-require('../models/interests.model.php');
+require('../models/interests.model/interests.model.php');
 
 class InterestsView {
     public static function render(Interests $interests): string {

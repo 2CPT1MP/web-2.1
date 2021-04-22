@@ -7,11 +7,16 @@ class HeaderView {
                 <meta charset="utf-8">
                 <title>{$title}</title>
                 <link rel="stylesheet" href="styles/style.css" type="text/css">
+                <link rel="stylesheet" href="styles/calendar.css" type="text/css">
                 <script src="scripts/jquery.js"></script>
                 <script src="scripts/navigation.js"></script>
                 <script src="scripts/photos.js"></script>
                 <script src="scripts/current_time.js"></script>
                 <script src="scripts/history_tracking.js"></script>
+                <script src="../scripts/form_verification.js"></script>
+                <script src="../scripts/popover.js"></script>
+                <script src="../scripts/window.js"></script>
+                <script src="../scripts/calendar.js"></script>
             </head>
             <body>
             <header class="dark-background">
