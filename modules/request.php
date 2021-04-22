@@ -7,6 +7,7 @@ class Request {
     public function __construct() {
         $this->method = $_SERVER["REQUEST_METHOD"];
         $this->setUrl($_SERVER["REQUEST_URI"]);
+
         $this->body = $_POST;
     }
 

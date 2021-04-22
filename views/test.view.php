@@ -6,7 +6,7 @@ class TestView {
     public static function render(Test $test): string {
         $html = HeaderView::render('Тест');
         $html .= '<article class="flex-container card">
-				  <form action="mailto:2CPT1MP@gmail.com" method=POST enctype="text/plain" autocomplete="off">
+				  <form action="/verify" method=POST autocomplete="off">
 						<label>Наименование дисциплины:
                             <input name="disc-name" type="text" value="Информатика" readonly>
 						</label>

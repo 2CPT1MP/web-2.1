@@ -8,16 +8,16 @@ class ContactView {
 
         return $html .= <<<CONTACT
             <article class="flex-container card">
-                <form id="contact-form" action="mailto:2CPT1MP@gmail.com" method=POST enctype="text/plain" autocomplete="off">
+                <form id="contact-form" action="/contact/verify" method=POST autocomplete="off">
                     <label id="fio-label">Ваше ФИО
                         <input name="sender-name" type="text" required autocomplete="off">
                     </label>
                     <label>Пол<br>
                         <label>Мужской
-                            <input name="sender-gender" type="radio" value="male" required>
+                            <input name="sender-gender" type="radio" value="Мужской" required>
                         </label>
                         <label>Женский
-                            <input name="sender-gender" type="radio" value="female" required>
+                            <input name="sender-gender" type="radio" value="Женский" required>
                         </label>
                     </label>
                     <br>
