@@ -1,2 +1,4 @@
-RewriteEngine  on
-RewriteRule    "/"  "/select" [L]
+<IfModule mod_rewrite.c >
+    RewriteEngine  on
+    RewriteRule    "/"  "/select" [L]
+</IfModule>
