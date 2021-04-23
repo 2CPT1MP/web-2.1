@@ -121,25 +121,29 @@ class Student {
             $this->addPhoto("Изображение $index", "/photos?id=$index");
         $this->test = new Test();
 
-        $question1 = new TestQuestion("Операционной системой не является");
+        $question1 = new TestQuestion("Операционной системой не является", 'MULTIPLE_SELECT');
         $question1->addRightAnswer("Word");
-        $question1->addWrongAnswer("Windows");
+        $question1->addRightAnswer("PowerPoint");
         $question1->addWrongAnswer("Ubuntu");
 
-        $question2 = new TestQuestion("Браузером  не является");
+        $question2 = new TestQuestion("Браузером  не является", "RADIO");
         $question2->addWrongAnswer("Internet Explorer");
         $question2->addRightAnswer("VLC");
         $question2->addWrongAnswer("Microsoft Edge");
 
-        $question3 = new TestQuestion("Неправильным именем переменной является");
+        $question3 = new TestQuestion("Неправильным именем переменной является", "SINGLE_SELECT");
         $question3->addWrongAnswer("_var");
         $question3->addRightAnswer("2var");
-        $question3->addRightAnswer("var");
+        $question3->addWrongAnswer("var");
+
+        $question4 = new TestQuestion("JS расшифровывается как", "TEXT");
+        $question4->addRightAnswer("JavaScript");
 
 
         $this->test->addTestQuestion($question1);
         $this->test->addTestQuestion($question2);
         $this->test->addTestQuestion($question3);
+        $this->test->addTestQuestion($question4);
     }
 
     public function getName(): string {

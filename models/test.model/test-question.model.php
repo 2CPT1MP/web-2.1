@@ -2,6 +2,7 @@
 
 class TestQuestion {
     private string $question;
+    private string $type;
     private array $rightAnswers = [];
     private array $wrongAnswers = [];
 
@@ -13,7 +14,8 @@ class TestQuestion {
         return $this->wrongAnswers;
     }
 
-    public function __construct(string $question) {
+    public function __construct(string $question, string $type='SINGLE_SELECT') {
+        $this->type = $type;
         $this->question = $question;
     }
 
@@ -27,6 +29,10 @@ class TestQuestion {
 
     public function getQuestion(): string {
         return $this->question;
+    }
+
+    public function getType(): string {
+        return $this->type;
     }
 }
 

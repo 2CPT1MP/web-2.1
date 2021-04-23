@@ -75,12 +75,15 @@ h3 {
 	margin-top: 1rem;
 }
 
+p, h1, h2, h3, h4 {
+	margin: 0 2% 0 4%;
+}
+
+
 p, .regular-list {
 	text-align: justify;
-	text-indent: 7%;
 	color: black;
 	font-size: 100%;
-	margin: 0 2% 0 4%;
 }
 
 .regular-list ul {
@@ -175,13 +178,17 @@ table {
 
 
 
-input[type=text], input[type=email], select, option, 
+input[type=text], input[type=email], select, option,
 input[type=submit], input[type=reset], textarea, input[type=number], input[type=tel], button {
 	padding: 1.25%;
 	display: inline-block;
 	width: 100%;
 	box-sizing: border-box;
 	font-size: 80%;
+}
+
+select[multiple] option {
+	display: block;
 }
 
 button, input[type=submit], input[type=reset] {

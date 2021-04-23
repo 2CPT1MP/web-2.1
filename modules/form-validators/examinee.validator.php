@@ -25,7 +25,10 @@ class ExamineeValidator extends PersonValidator {
                 $msg .= "{$this->errors[$field]}<br>";
             }
         }
-        return [$valid, "$msg {$this->verifyResults()}"];
+
+        if ($valid)
+            return [true, "$msg {$this->verifyResults()}"];
+        return [false, "$msg"];
     }
 
     public function isValidGroupName($groupName): bool {
@@ -45,20 +48,31 @@ class ExamineeValidator extends PersonValidator {
         $score = 0;
         $total = 0;
 
+        foreach ($questions as $q) {
+            $total += count($q->getRightAnswers());
+        }
+
+
+
         foreach ($questions as $question) {
             $rightAnswers = $question->getRightAnswers();
 
+            if (!isset($this->formData[str_replace(' ', '_', $question->getQuestion())]))
+                continue;
+
             foreach ($this->formData[str_replace(' ', '_', $question->getQuestion())] as $answer) {
-                if (in_array($answer, $rightAnswers)) {
 
-                    $score++;
+                foreach ($rightAnswers as $answ) {
+                    if ($answ === $answer) {
+                        $score++;
+                    }
                 }
-
-                $total++;
             }
         }
 
-        return "<p>{$score} из {$total}</p>";
+        $percend = $score / $total * 100;
+
+        return "<p>Правильных ответов {$score} из {$total} ($percend%)</p>";
     }
 }
 

@@ -28,7 +28,7 @@ class RootRouter {
                 return $value->processRequest($request);
             }
         }
-        return "<p>Router/Controller was not found</p>";
+        return MessageView::render('Страница не найдена', "<p>Данной страницы не существует</p>");
     }
 }
 

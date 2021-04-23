@@ -30,23 +30,62 @@ class TestView {
         foreach ($test->getTestQuestions() as $testQuestion) {
             $answers = array_merge($testQuestion->getRightAnswers(), $testQuestion->getWrongAnswers());
 
-            $html .= "<label>{$testQuestion->getQuestion()}
-                      <select required name=\"{$testQuestion->getQuestion()}[]\">
-                      <option value='none'>-</option>
-            ";
-
-            foreach ($answers as $answer)
-                $html .= "<option value=$answer>$answer</option>";
-
-            $html .= "</select>";
-
+            $html .= match ($testQuestion->getType()) {
+                "SINGLE_SELECT" => self::showSingleSelect($testQuestion->getQuestion(), $answers),
+                "MULTIPLE_SELECT" => self::showMultipleSelect($testQuestion->getQuestion(), $answers),
+                "TEXT" => self::showText($testQuestion->getQuestion()),
+                "RADIO" => self::showRadio($testQuestion->getQuestion(), $answers),
+            };
         }
 
-
-        return $html .= "	
+        return $html . "	
 	        <input type='submit'>
 			</form>
 			</article>";
+    }
+
+    public static function showSingleSelect(string $title, array $answers): string {
+        $html = "<label>$title
+                      <select required name=\"{$title}[]\">
+                      <option value='none' selected disabled>-</option>
+            ";
+
+        foreach ($answers as $answer)
+            $html .= "<option value=$answer>$answer</option>";
+
+        return $html . "</select>";
+
+    }
+
+    public static function showMultipleSelect(string $title, array $answers): string {
+        $html = "<label>$title
+                      <select multiple required name=\"{$title}[]\">
+                      <option value='none' disabled>-</option>
+            ";
+
+        foreach ($answers as $answer)
+            $html .= "<option value=$answer>$answer</option>";
+
+        return $html . "</select>";
+
+    }
+
+    public static function showText(string $title): string {
+        return "<label>$title
+                 <input required type='text' name=\"{$title}[]\">
+                 </label>
+            ";
+
+    }
+
+    public static function showRadio(string $title, array $answers): string {
+        $html = "<label>$title<br>";
+
+        foreach ($answers as $answer)
+            $html .= "<input required type='radio' name=\"{$title}[]\" value=\"$answer\"> $answer<br>";
+
+        return $html . "</label>";
+
     }
 }
 
